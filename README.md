@@ -25,7 +25,7 @@ Make a local payara folder and download the latest [Payara Micro](https://www.pa
 
 Then run the following command using Java 8.
 ```
-java -jar payara/payara-micro-4.1.2.181.jar --deploy target/payaramicro.war
+java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
 ```
 
 
