@@ -59,7 +59,7 @@ curl -i --user ole:bole http://localhost:8080/payaramicro/rest/secure   <= 200 O
 
 
 ## MicroProfile 1.2 features
-These features are not yet included in this playground `Fault Tolerance 1.0`, `JWT Propagation 1.0`, 
+These features are yet to be included in the playground `Fault Tolerance 1.0`, `JWT Propagation 1.0`, 
 `Health Metrics 1.0`, `Health Check 1.0`.
 
 ### Config API 1.1
@@ -74,8 +74,8 @@ curl http://localhost:8080/payaramicro/rest/config
 
 
 ## JCache JSR-107
-The JCache is only enabled when Payara Micro runs in cluster mode (which is default).
-It can be tested with the following curl commands :
+The JCache is only enabled when Payara Micro runs in cluster mode (which is default), take a look in the
+`cache` package for an example.  It can be tested with the following curl commands :
 ```
 curl http://localhost:8080/payaramicro/rest/cache/123
 curl -X DELETE http://localhost:8080/payaramicro/rest/cache/123
