@@ -15,6 +15,12 @@ additional libraries.  This should provide lean and mean WAR files, fast to copy
 
 Each package in this project aims to demonstrate one feature and the different parts are explained below.
 
+## TODO List
+- [x] Add Oracle data-source example
+- [ ] Add each demonstrated feature to separate markdown (keep this main README lean and clean)
+
+
+
 ### To build the WAR file
 ```
 mvn clean package
@@ -27,6 +33,12 @@ Then run the following command using Java 8.
 ```
 java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
 ```
+
+### Swagger definition
+When building the jaxrs-analyze will inspect the actual bytecode and create swagger definition in `target/jaxrs-analyzer/swagger.json`.  
+This definition can be imported into Postman or other tools for easy testing and can be used by clients to create client code.
+
+It is worth mentioning that the analyzer   
 
 
 
@@ -55,7 +67,41 @@ information about who is authenticated directly into the REST service.
 curl -I http://localhost:8080/payaramicro/rest/secure                   <= 401 Unauthorized
 curl -i --user ole:bole http://localhost:8080/payaramicro/rest/secure   <= 200 OK
  ```
+ 
+### JNDI database directly in web.xml
+With JEE7 it is possible to define JNDI data-source directly in web.xml and include the JDBC driver in the war.
+This JDNI datasource can be injected anywhere in your CDI beans like this :
+```
+@Resource(mappedName="java:global/DataSource")
+private DataSource dataSource;
+```
 
+The code in web.xml would look like this for Oracle using URL with ServiceName :
+```
+<data-source>
+    <name>java:global/DataSource</name>
+    <class-name>oracle.jdbc.pool.OracleDataSource</class-name>
+    <user>username</user>
+    <password>password</password>
+    <property>
+        <name>url</name>
+        <value>jdbc:oracle:thin:@server.somewhere.no:1521/SERVICE.prod.system.local</value>
+    </property>
+</data-source>
+``` 
+
+For other database vendors we could use the simpler database-name syntax like MySQL :
+```
+<data-source>
+    <name>java:global/DataSource</name>
+    <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>
+    <server-name>server.somewhere.no</server-name>
+    <port-number>3306</port-number>
+    <database-name>databasename</database-name>
+    <user>username</user>
+    <password>password</password>
+</data-source>
+``` 
 
 
 ## MicroProfile 1.2 features

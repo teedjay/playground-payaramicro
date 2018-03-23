@@ -49,6 +49,25 @@
     </dependencies>
     <build>
         <finalName>payaramicro</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.sebastian-daschner</groupId>
+                <artifactId>jaxrs-analyzer-maven-plugin</artifactId>
+                <version>0.14</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>analyze-jaxrs</goal>
+                        </goals>
+                        <configuration>
+                            <backend>swagger</backend>
+                            <deployedDomain>localhost:8080</deployedDomain>
+                            <swaggerSchemes>https</swaggerSchemes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
