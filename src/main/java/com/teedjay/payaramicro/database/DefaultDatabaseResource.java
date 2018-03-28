@@ -18,7 +18,7 @@ public class DefaultDatabaseResource {
 
     @GET
     public String assertDefaultDataSourcePresent() {
-        return (defaultDataSource == null) ? "No Default DataSource" : "Default DataSource is present";
+        return (defaultDataSource == null) ? "No Default DataSource" : "Default DataSource is present : " + defaultDataSource.toString();
     }
 
     @GET

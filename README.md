@@ -136,6 +136,16 @@ For other database vendors we could use the simpler database-name syntax like My
 </data-source>
 ``` 
 
+### ExceptionMapper
+It is possible to catch unhandled Exceptions using the jax-rs ExceptionMapper feature.
+Take a look into the `exception` package and use the `ExceptionTriggerResource` below to
+trigger RuntimeExceptions that will be catched by the `ExceptionMapperUnhandled` and 
+mapped to HTTP 400 BAD_REQUEST with text plain.
+``` 
+curl -i http://localhost:8080/payaramicro/rest/exception/2      <== returns 10/2
+curl -i http://localhost:8080/payaramicro/rest/exception/0      <== 10/0 trigges ArithmeticException and will be mapped
+``` 
+
 
 
 ## MicroProfile 1.2 features
