@@ -90,6 +90,7 @@ curl -i http://localhost:8080/payaramicro/rest/database/2   <== returns name of 
 
 ### Default Database with EntityManager, Transactions and JPA
 You can see how EntityManager works by looking into the `jpa` package and testing the resources below.  
+
 The `persistence.xml` has been configured to use the default database connection,
 create database by using metadata (annotations on entity) and populate the database
 with a couple of rows using the `data.sql` script. 
@@ -103,7 +104,7 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"id":3,"name":"anne"}' 
 
 ### Custom JNDI databases directly in web.xml
 With JEE7 it is possible to define JNDI data-source directly in web.xml and include the JDBC driver in the war.
-This JDNI datasource can be injected anywhere in your CDI beans like this :
+This JNDI datasource can be injected anywhere in your CDI beans like this :
 ```
 @Resource(mappedName="java:global/DataSource")
 private DataSource dataSource;
@@ -138,9 +139,12 @@ For other database vendors we could use the simpler database-name syntax like My
 
 ### ExceptionMapper
 It is possible to catch unhandled Exceptions using the jax-rs ExceptionMapper feature.
-Take a look into the `exception` package and use the `ExceptionTriggerResource` below to
-trigger RuntimeExceptions that will be catched by the `ExceptionMapperUnhandled` and 
-mapped to HTTP 400 BAD_REQUEST with text plain.
+Take a look into the `exception` package and the `ExceptionMapperUnhandled` class to
+see how this work.
+
+You can trigger RuntimeExceptions by using the `ExceptionTriggerResource`, a division by
+zero will generate a ArithmeticException that will be mapped to HTTP 400 BAD_REQUEST with
+a simple text/plain message.
 ``` 
 curl -i http://localhost:8080/payaramicro/rest/exception/2      <== returns 10/2
 curl -i http://localhost:8080/payaramicro/rest/exception/0      <== 10/0 trigges ArithmeticException and will be mapped
