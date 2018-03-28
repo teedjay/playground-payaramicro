@@ -35,10 +35,13 @@ java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
 ```
 
 ### Swagger definition
-When building the jaxrs-analyze will inspect the actual bytecode and create swagger definition in `target/jaxrs-analyzer/swagger.json`.  
+When building the jaxrs-analyzer will inspect the actual bytecode and create swagger definition in `target/jaxrs-analyzer/swagger.json`.  
 This definition can be imported into Postman or other tools for easy testing and can be used by clients to create client code.
 
-It is worth mentioning that the analyzer   
+The jaxrs-analyzer actually does some byte code analyzis and might be able to find out which entities you are
+returning in your Response.   For more feature rich swagger generation and manual control you can look into 3rd party
+generators like [Apiee](https://github.com/phillip-kruger/apiee/wiki) or use the latest Swagger 2.0 
+[OpenApi 3.0 libraries](https://github.com/frantuma/swagger-core/wiki/Swagger-2.X---Getting-started). 
 
 
 
@@ -63,12 +66,42 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"quote":"Eat Your Food"
 It is easy to add security as a layer to your application.  In the `security` package we
 have a filter called BasicAuthenticationLayer that demos how to protect a url and inject
 information about who is authenticated directly into the REST service.
- ```
+```
 curl -I http://localhost:8080/payaramicro/rest/secure                   <= 401 Unauthorized
 curl -i --user ole:bole http://localhost:8080/payaramicro/rest/secure   <= 200 OK
- ```
- 
-### JNDI database directly in web.xml
+```
+
+### Default Database
+Every JEE7 server needs to have a default JDBC database resource available.  It is up to the container to decide which
+database implementation this is, for Payara Micro 5 this is the H2 JDBC database (used to be Derby in earlier versions).
+
+The default datasource can be found explicit in JNDI as `java:comp/DefaultDataSource` or more implicit using any of these :
+```
+@Resource(name="MyDataSource", lookup="java:comp/DefaultDataSource") DataSource myDS;
+@Resource(name="MyDataSource") DataSource myDS;
+@Resource DataSource myDS;
+```
+
+You can see how the default database connection works by looking into the `database` package and testing the resources below.  
+```
+curl -i http://localhost:8080/payaramicro/rest/database     <== returns datasource status message
+curl -i http://localhost:8080/payaramicro/rest/database/2   <== returns name of person in databse with given id
+```
+
+### Default Database with EntityManager, Transactions and JPA
+You can see how EntityManager works by looking into the `jpa` package and testing the resources below.  
+The `persistence.xml` has been configured to use the default database connection,
+create database by using metadata (annotations on entity) and populate the database
+with a couple of rows using the `data.sql` script. 
+
+The REST resource below will list all persons, fetch a specific person and add a new person to the database.
+```
+curl -i http://localhost:8080/payaramicro/rest/jpa
+curl -i http://localhost:8080/payaramicro/rest/jpa/2
+curl -i -X POST -H "Content-Type: application/json" -d '{"id":3,"name":"anne"}' http://localhost:8080/payaramicro/rest/jpa
+```
+
+### Custom JNDI databases directly in web.xml
 With JEE7 it is possible to define JNDI data-source directly in web.xml and include the JDBC driver in the war.
 This JDNI datasource can be injected anywhere in your CDI beans like this :
 ```
@@ -102,6 +135,7 @@ For other database vendors we could use the simpler database-name syntax like My
     <password>password</password>
 </data-source>
 ``` 
+
 
 
 ## MicroProfile 1.2 features
