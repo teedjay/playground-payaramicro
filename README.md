@@ -22,16 +22,31 @@ Each package in this project aims to demonstrate one feature and the different p
 
 
 ### To build the WAR file
+You need Java 8 and Maven 8 installed to build and run.
 ```
 mvn clean package
 ```
 
 ### To run locally
-Make a local payara folder and download the latest [Payara Micro](https://www.payara.fish/payara_micro) jar file there (do **not** add payara micro to git). 
+Make a local payara folder and download the latest [Payara Micro 5](https://www.payara.fish/payara_micro) jar file there (do **not** add payara micro to git). 
 
 Then run the following command using Java 8.
 ```
 java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
+```
+
+### Optionally : Compile, build and run using Docker
+The build command will first compile and create the war file in a Java 8 and Maven container.  
+Then war file will then be copied into the result image tagged as `my_payara_image` which can be run like shown below.
+```
+docker build -t my_payara_image .
+docker run -p 8080:8080 -d --name playgound_payara my_payara_image
+```
+
+After running the container you can stop and start it like this :
+```
+docker stop playgound_payara
+docker start playgound_payara
 ```
 
 ### Swagger definition
@@ -155,6 +170,12 @@ curl -i http://localhost:8080/payaramicro/rest/exception/0      <== 10/0 trigges
 ## MicroProfile 1.2 features
 These features are yet to be included in the playground `Fault Tolerance 1.0`, `JWT Propagation 1.0`, 
 `Health Metrics 1.0`, `Health Check 1.0`.
+
+### Basic Metrics 
+You can obtain some basic metrics about the Java RunTime in Prometheus format directly.
+```
+curl http://localhost:8080/metrics
+``` 
 
 ### Config API 1.1
 By using the Config API it is possible to inject configuration directly into your code.
