@@ -13,6 +13,7 @@ endif::[]
 Here is my preamble paragraph, but I could really place the TOC anywhere! Lorem ipsum foo bar baz.
 
 More details here :
+https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74
 
 
@@ -52,16 +53,19 @@ CAUTION: Don't forget to add the `...-caption` document attributes in the header
 WARNING: You have no reason not to use Asciidoctor.
 
 
-[source]
+[source,groovy]
 ----
-\ifdef::env-github[] <1> (1)
-:imagesdir: https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
-endif::[]
-\ifndef::env-github[] <2>
-:imagesdir: ./
-endif::[]
+package com.mrhaki.adoc
+
+class Sample {
+    String username // <1>
+
+    String toString() {
+        "${username?.toUpperCase() ?: 'not-defined'}" // <2>
+    }
+}
 ----
-<1> Use the `ifdef` to customize for online rendering (2)
-<2> Use the `ifndef` to customize for offline
+<1> Simple property definition where Groovy will generate the +setUsername+ and +getUsername+ methods.
+<2> Return username in upper case if set, otherwise return +not-defined+.
 
 
