@@ -1,7 +1,7 @@
 :toc:
 :toc-placement!:
 
-:icons: font
+:icons: awesome
 
 ifdef::env-github[]
 :tip-caption: :bulb:
