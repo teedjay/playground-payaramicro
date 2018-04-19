@@ -2,8 +2,6 @@
 :toc-placement!:
 
 :icons: font
-:customcss: asciidoctor-reveal.css
-:linkcss:
 
 ifdef::env-github[]
 :tip-caption: :bulb:
