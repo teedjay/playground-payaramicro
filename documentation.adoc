@@ -19,6 +19,22 @@ https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74
 toc::[]
 
 
+= Document Title (Level 0)
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+==== Level 3 Section Title
+
+===== Level 4 Section Title
+
+====== Level 5 Section Title
+
+== Another Level 1 Section Title
+
+
+
 [NOTE]
 ====
 A sample note admonition.
@@ -37,14 +53,14 @@ WARNING: You have no reason not to use Asciidoctor.
 
 
 [source]
- ----
+----
 \ifdef::env-github[] <1> (1)
 :imagesdir: https://gist.githubusercontent.com/path/to/gist/revision/dir/with/all/images
 endif::[]
 \ifndef::env-github[] <2>
 :imagesdir: ./
 endif::[]
- ----
+----
 <1> Use the `ifdef` to customize for online rendering (2)
 <2> Use the `ifndef` to customize for offline
 
