@@ -18,9 +18,9 @@ include::events.adoc[]
 
 include::exceptions.adoc[]
 
-include::jpa.adoc[]
+include::jaxrs.adoc[]
 
-include::quotes.adoc[]
+include::jpa.adoc[]
 
 include::security.adoc[]
 
