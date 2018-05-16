@@ -1,0 +1,8 @@
+=== Security as a layer
+It is easy to add security as a layer to your application.  In the `security` package we
+have a filter called BasicAuthenticationLayer that demos how to protect a url and inject
+information about who is authenticated directly into the REST service.
+```
+curl -I http://localhost:8080/payaramicro/rest/secure                   <= 401 Unauthorized
+curl -i --user ole:bole http://localhost:8080/payaramicro/rest/secure   <= 200 OK
+```

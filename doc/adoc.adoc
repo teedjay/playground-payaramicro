@@ -1,0 +1,47 @@
+:icons: font
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+More examples and information here :
+https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74
+
+[NOTE]
+====
+A sample note admonition.
+We can use gemoji icons in the Asciidoctor markup.
+We assign an icon name to the document
+attributes `tip-caption`, `note-caption` and `important-caption`.
+====
+
+TIP: It works!
+
+IMPORTANT: Asciidoctor is awesome, don't forget!
+
+CAUTION: Don't forget to add the `...-caption` document attributes in the header of the document on GitHub.
+
+WARNING: You have no reason not to use Asciidoctor.
+
+
+[source,groovy]
+----
+package com.mrhaki.adoc
+
+class Sample {
+    String username // <1>
+
+    String toString() {
+        "${username?.toUpperCase() ?: 'not-defined'}" // <2>
+    }
+}
+----
+<1> Simple property definition where Groovy will generate the +setUsername+ and +getUsername+ methods.
+<2> Return username in upper case if set, otherwise return +not-defined+.
+
+

@@ -1,0 +1,17 @@
+=== Events
+It is very easy to create events based applications with CDI in JEE7.  In the `events` package we
+have crated a two event listeners ("observers") and a REST resource that send an event when triggered.
+
+The actual event is just a normal Java bean and to send it you @Inject a typed event and fire new events with it.
+
+To receive events you annotate your event listening methods to @Observes the typed events and do whatever you need to be done.
+
+==== How to test
+To send a new event use the curl command below.
+```
+curl -I http://localhost:8080/payaramicro/rest/events
+```
+You should get the sendt message in the response.
+
+==== Expected result
+Expected result is that both observers beeing triggered, each logging the received event message to system out.

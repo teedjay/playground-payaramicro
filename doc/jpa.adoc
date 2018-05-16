@@ -1,0 +1,13 @@
+=== Default Database with EntityManager, Transactions and JPA
+You can see how EntityManager works by looking into the `jpa` package and testing the resources below.
+
+The `persistence.xml` has been configured to use the default database connection,
+create database by using metadata (annotations on entity) and populate the database
+with a couple of rows using the `data.sql` script.
+
+The REST resource below will list all persons, fetch a specific person and add a new person to the database.
+```
+curl -i http://localhost:8080/payaramicro/rest/jpa
+curl -i http://localhost:8080/payaramicro/rest/jpa/2
+curl -i -X POST -H "Content-Type: application/json" -d '{"id":3,"name":"anne"}' http://localhost:8080/payaramicro/rest/jpa
+```

@@ -1,0 +1,13 @@
+=== Testable REST services with JAX-RS
+With standard JEE7 we can create powerful REST services that are easy to test.
+A simple example that can store and retrieve quotes is included in the package `quotes`.
+
+The example has full test coverage and demonstrates how to test JAX-RS.  It also
+demonstrate use of very simple Java classes with public fields as data-transport for
+automatic mapping between Java and JSON.
+```
+curl -i http://localhost:8080/payaramicro/rest/quotes
+curl -i http://localhost:8080/payaramicro/rest/quotes/<uuid>
+curl -i -X DELETE http://localhost:8080/payaramicro/rest/quotes/<uuid>
+curl -i -X POST -H "Content-Type: application/json" -d '{"quote":"Eat Your Food","author":"Your Mother"}' http://localhost:8080/payaramicro/rest/quotes
+```

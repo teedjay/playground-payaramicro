@@ -1,73 +1,37 @@
 :toc:
 :toc-placement!:
 
-:icons: font
-
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-
-
-Here is my preamble paragraph, but I could really place the TOC anywhere! Lorem ipsum foo bar baz.
-
-More details here :
-https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
-https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74
-
+= Payara Micro Playground
+Simple code examples to show of Payara Micro.
 
 toc::[]
 
+== How to build and run
+This is documented in README.md
 
-= Document Title (Level 0)
+== How to use JEE7 features
+This section demonstrate standard JEE7 features.
 
-== Level 1 Section Title
+include::database.adoc[]
+include::events.adoc[]
+include::exceptions.adoc[]
+include::jpa.adoc[]
+include::quotes.adoc[]
+include::security.adoc[]
 
-=== Level 2 Section Title
+== How to use MicroProfile 1.2 features
+These features are yet to be included in the playground `Fault Tolerance 1.0`, `JWT Propagation 1.0`,
+`Health Metrics 1.0`, `Health Check 1.0`.
 
-==== Level 3 Section Title
+include::config.adoc[]
+include::metrics.adoc[]
 
-===== Level 4 Section Title
+== How to use JCache features
+When running Payara Micro in cluster mode you have cluster aware caching available for free.
 
-====== Level 5 Section Title
+include::cache.adoc[]
 
-== Another Level 1 Section Title
+== More adoc examples
+Here are some more adoc examples.
 
-
-
-[NOTE]
-====
-A sample note admonition.
-We can use gemoji icons in the Asciidoctor markup.
-We assign an icon name to the document
-attributes `tip-caption`, `note-caption` and `important-caption`.
-====
-
-TIP: It works!
-
-IMPORTANT: Asciidoctor is awesome, don't forget!
-
-CAUTION: Don't forget to add the `...-caption` document attributes in the header of the document on GitHub.
-
-WARNING: You have no reason not to use Asciidoctor.
-
-
-[source,groovy]
-----
-package com.mrhaki.adoc
-
-class Sample {
-    String username // <1>
-
-    String toString() {
-        "${username?.toUpperCase() ?: 'not-defined'}" // <2>
-    }
-}
-----
-<1> Simple property definition where Groovy will generate the +setUsername+ and +getUsername+ methods.
-<2> Return username in upper case if set, otherwise return +not-defined+.
-
-
+include::adoc.adoc[]

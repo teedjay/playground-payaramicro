@@ -1,0 +1,51 @@
+=== Default Database
+Every JEE7 server needs to have a default JDBC database resource available.  It is up to the container to decide which
+database implementation this is, for Payara Micro 5 this is the H2 JDBC database (used to be Derby in earlier versions).
+
+The default datasource can be found explicit in JNDI as `java:comp/DefaultDataSource` or more implicit using any of these :
+```
+@Resource(name="MyDataSource", lookup="java:comp/DefaultDataSource") DataSource myDS;
+@Resource(name="MyDataSource") DataSource myDS;
+@Resource DataSource myDS;
+```
+
+You can see how the default database connection works by looking into the `database` package and testing the resources below.
+```
+curl -i http://localhost:8080/payaramicro/rest/database     <== returns datasource status message
+curl -i http://localhost:8080/payaramicro/rest/database/2   <== returns name of person in databse with given id
+```
+
+=== Custom JNDI databases directly in web.xml
+With JEE7 it is possible to define JNDI data-source directly in web.xml and include the JDBC driver in the war.
+This JNDI datasource can be injected anywhere in your CDI beans like this :
+```
+@Resource(mappedName="java:global/DataSource")
+private DataSource dataSource;
+```
+
+The code in web.xml would look like this for Oracle using URL with ServiceName :
+```
+<data-source>
+    <name>java:global/DataSource</name>
+    <class-name>oracle.jdbc.pool.OracleDataSource</class-name>
+    <user>username</user>
+    <password>password</password>
+    <property>
+        <name>url</name>
+        <value>jdbc:oracle:thin:@server.somewhere.no:1521/SERVICE.prod.system.local</value>
+    </property>
+</data-source>
+```
+
+For other database vendors we could use the simpler database-name syntax like MySQL :
+```
+<data-source>
+    <name>java:global/DataSource</name>
+    <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>
+    <server-name>server.somewhere.no</server-name>
+    <port-number>3306</port-number>
+    <database-name>databasename</database-name>
+    <user>username</user>
+    <password>password</password>
+</data-source>
+```

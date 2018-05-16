@@ -1,0 +1,12 @@
+=== ExceptionMapper
+It is possible to catch unhandled Exceptions using the jax-rs ExceptionMapper feature.
+Take a look into the `exception` package and the `ExceptionMapperUnhandled` class to
+see how this work.
+
+You can trigger RuntimeExceptions by using the `ExceptionTriggerResource`, a division by
+zero will generate a ArithmeticException that will be mapped to HTTP 400 BAD_REQUEST with
+a simple text/plain message.
+```
+curl -i http://localhost:8080/payaramicro/rest/exception/2      <== returns 10/2
+curl -i http://localhost:8080/payaramicro/rest/exception/0      <== 10/0 trigges ArithmeticException and will be mapped
+```

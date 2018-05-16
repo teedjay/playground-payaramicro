@@ -1,0 +1,8 @@
+== How to use JCache JSR-107
+The JCache is only enabled when Payara Micro runs in cluster mode (which is default), take a look in the
+`cache` package for an example.  It can be tested with the following curl commands :
+```
+curl http://localhost:8080/payaramicro/rest/cache/123
+curl -X DELETE http://localhost:8080/payaramicro/rest/cache/123
+curl -X DELETE http://localhost:8080/payaramicro/rest/cache/all
+```

@@ -1,0 +1,8 @@
+=== Config API 1.1
+By using the Config API it is possible to inject configuration directly into your code.
+Default config override order is System Properties -> Environment Variables -> microprofile-config.properties
+
+In the package `config` you'll find a small webservice that returns a config read from the properties file :
+```
+curl http://localhost:8080/payaramicro/rest/config
+```
