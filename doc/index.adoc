@@ -13,10 +13,15 @@ This is documented in README.md
 This section demonstrate standard JEE7 features.
 
 include::database.adoc[]
+
 include::events.adoc[]
+
 include::exceptions.adoc[]
+
 include::jpa.adoc[]
+
 include::quotes.adoc[]
+
 include::security.adoc[]
 
 == How to use MicroProfile 1.2 features
@@ -24,6 +29,7 @@ These features are yet to be included in the playground `Fault Tolerance 1.0`, `
 `Health Metrics 1.0`, `Health Check 1.0`.
 
 include::config.adoc[]
+
 include::metrics.adoc[]
 
 == How to use JCache features
