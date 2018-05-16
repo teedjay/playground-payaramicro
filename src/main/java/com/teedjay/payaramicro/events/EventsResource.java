@@ -11,13 +11,13 @@ import javax.ws.rs.Path;
 public class EventsResource {
 
     @Inject
-    Event<TestEvent> event;
+    private Event<TestEvent> event;
 
     @GET
     public String triggerNewEvent() {
         TestEvent eventData = new TestEvent();
         event.fire(eventData);
-        return String.format("Event with message '%s' was sent\n", eventData.message);
+        return String.format("Event with message '%s' was sent%n", eventData.message);
     }
 
 }

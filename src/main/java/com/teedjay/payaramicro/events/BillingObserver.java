@@ -11,7 +11,7 @@ import javax.enterprise.event.Observes;
 public class BillingObserver {
 
     public void receivesTestEvents(@Observes TestEvent event) {
-        System.out.printf("BillingObserver handled TestEvent with message %s\n", event.message);
+        System.out.printf("BillingObserver handled TestEvent with message %s%n", event.message);
     }
 
 }
