@@ -1,5 +1,5 @@
 # Payara Micro Playground
-Payara Micro is a small [Java EE 7](http://www.oracle.com/technetwork/java/javaee/tech/index-jsp-142185.html) server 
+Payara Micro is a small [Java EE](http://www.oracle.com/technetwork/java/javaee/tech/index-jsp-142185.html) server 
 that also includes support for [Eclipse MicroProfile 1.2](https://projects.eclipse.org/projects/technology.microprofile) 
 and [JCache](https://www.jcp.org/en/jsr/detail?id=107).
 
@@ -7,7 +7,10 @@ Payara Micro have built-in clustering as default (no configuration needed) and c
 from the command line without any installation.  This makes it suitable for fast deploy cycles and running
 MicroServices.
 
-It is also a good fit with Docker and container orchestration like Kubernetes.
+Since you compile against a specification that is provided by the runtime you will get skinny WAR files,
+this makes it smooth and fast to do CI/CD. 
+
+It is also a great fit with Docker and container orchestration like Kubernetes.
 
 ## What is this project?
 This is a playground to mess around with different JEE7 and MicroProfile 1.2 features without any
@@ -15,12 +18,9 @@ additional libraries.  This should provide lean and mean WAR files, fast to copy
 
 Each package in this project aims to demonstrate one feature and the different parts are [documented and explained](doc/index.adoc).
 
-
-
 ## TODO List
 - [x] Add Oracle data-source example
-- [x] Add Ascii Doctor documentaton
-- [ ] Add each demonstrated feature to separate markdown (keep this main README lean and clean)
+- [x] Add Asciidoctor documentaton for each feaure (keep this main README lean and clean)
 
 ### To build the WAR file
 You need Java 8 and Maven 8 installed to build and run.
