@@ -11,8 +11,10 @@ that aims to demonstrate and describe one feature.
 All code is standard JEE7 or MicroProfile and should easily run on JEE servers like
 https://www.payara.fish/payara_micro[Payara Micro],
 http://wildfly-swarm.io[WildFly Swarm],
-http://tomee.apache.org[TomEE]
-https://openliberty.io[OpenLiberty] and module based runtimes as
+http://tomee.apache.org[TomEE] and
+https://openliberty.io[OpenLiberty].
+
+It should also work great with module based runtimes as
 https://ee.kumuluz.com[kumuluzEE] and
 https://hammock-project.github.io[Hammock].
 
