@@ -8,13 +8,14 @@ from the command line without any installation.  This makes it suitable for fast
 MicroServices.
 
 Since you compile against a specification that is provided by the runtime you will get skinny WAR files.
-The small size makes it smooth and fast to do CI/CD and is optimal for storage of deployment artifacts in Nexus. 
+The small size makes it smooth and fast to do CI/CD and is optimal for storage of deployment artifacts in
+repositories like Nexus. 
 
-Payara Micro also supports creating a Fat-JAR / Uber-JAR, bundling both the appserver and your application(s)
-in a single runnable jar-artifact.
+Skinny war files makes Payara Micro a great fit with Docker and container orchestration like Kubernetes.
+The only change between versioned Docker images will be the tiny WAR file.
 
-When used with skinny war files Payara Micro is a great fit with Docker and container orchestration like Kubernetes.
-The only change between versioned Docker images will be the tiny WAR files.
+Payara Micro also facilitates Fat-JAR / Uber-JAR, creating a single runnable jar-artifact
+that includes both appserver and your application(s).  This is great for easy deployment. 
 
 ## What is this project?
 This is a playground to mess around with different JEE7 and MicroProfile 1.2 features without any
