@@ -7,6 +7,9 @@ Payara Micro have built-in clustering as default (no configuration needed) and c
 from the command line without any installation.  This makes it suitable for fast deploy cycles and running
 MicroServices.
 
+Payara Micro also supports creating a Fat-JAR / Uber-JAR, bundling both the appserver and your application(s)
+in a single runnable jar-artifact.
+
 Since you compile against a specification that is provided by the runtime you will get skinny WAR files,
 this makes it smooth and fast to do CI/CD. 
 
@@ -34,6 +37,13 @@ Make a local payara folder and download the latest [Payara Micro 5](https://www.
 Then run the following command using Java 8.
 ```
 java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
+```
+
+### To build and run as standalone "Uber JAR" / "FAT JAR"
+```
+mvn clean package
+java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war --outputUberJar my-standalone-app.jar
+java -jar my-standalone-app.jar
 ```
 
 ### Optionally : Compile, build and run using Docker
