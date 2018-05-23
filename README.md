@@ -7,13 +7,14 @@ Payara Micro have built-in clustering as default (no configuration needed) and c
 from the command line without any installation.  This makes it suitable for fast deploy cycles and running
 MicroServices.
 
+Since you compile against a specification that is provided by the runtime you will get skinny WAR files.
+The small size makes it smooth and fast to do CI/CD and is optimal for storage of deployment artifacts in Nexus. 
+
 Payara Micro also supports creating a Fat-JAR / Uber-JAR, bundling both the appserver and your application(s)
 in a single runnable jar-artifact.
 
-Since you compile against a specification that is provided by the runtime you will get skinny WAR files,
-this makes it smooth and fast to do CI/CD. 
-
-It is also a great fit with Docker and container orchestration like Kubernetes.
+When used with skinny war files Payara Micro is a great fit with Docker and container orchestration like Kubernetes.
+The only change between versioned Docker images will be the tiny WAR files.
 
 ## What is this project?
 This is a playground to mess around with different JEE7 and MicroProfile 1.2 features without any
