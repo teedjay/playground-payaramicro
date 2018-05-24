@@ -24,8 +24,22 @@ public class CrazyDefunctResource {
         return success;
     }
 
-    @Timeout(2000)
+    @Timeout(1000)
     public String slowFunctionThatSleepsForAWhile(long milliSeconds) {
+        return sleep(milliSeconds);
+    }
+
+    @Timeout(1000)
+    @Fallback(fallbackMethod = "fallbackForSlowFunction")
+    public String slowFunctionWithFallbackAfterAWhile(long milliSeconds) {
+        return sleep(milliSeconds);
+    }
+
+    public String fallbackForSlowFunction(long milliSeconds) {
+        return "Timeout was exceeded, we return this fallback text instead.";
+    }
+
+    private String sleep(long milliSeconds) {
         long start = System.currentTimeMillis();
         try {
             Thread.sleep(milliSeconds);
@@ -38,25 +52,6 @@ public class CrazyDefunctResource {
         String success =  "Function simulated work for " + milliSeconds + "ms.";
         System.out.println(success);
         return success;
-    }
-
-    @Timeout(1000)
-    @Fallback(fallbackMethod = "fallbackForSlowFunction")
-    public String slowFunctionWithFallbackAfterAWhile(long milliSeconds) {
-        try {
-            Thread.sleep(milliSeconds);
-        } catch (InterruptedException e) {
-            String failure = "Thread was interrupted while sleeping for " + milliSeconds + "ms.";
-            System.out.println(failure);
-            return failure;
-        }
-        String success =  "Function simulated work for " + milliSeconds + "ms.";
-        System.out.println(success);
-        return success;
-    }
-
-    public String fallbackForSlowFunction(long milliSeconds) {
-        return "Timeout was exceeded, we return this fallback text instead";
     }
 
 }
