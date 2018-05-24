@@ -1,5 +1,6 @@
 package com.teedjay.payaramicro.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.Bulkhead;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
@@ -37,6 +38,11 @@ public class CrazyDefunctResource {
 
     public String fallbackForSlowFunction(long milliSeconds) {
         return "Timeout was exceeded, we return this fallback text instead.";
+    }
+
+    @Bulkhead(2)
+    public String callFunctionThatOnlyAllowsTwoConcurrentExecutions(long milliSeconds) {
+        return sleep(milliSeconds);
     }
 
     private String sleep(long milliSeconds) {

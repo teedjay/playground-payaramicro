@@ -54,13 +54,24 @@ Expected HTTP 200 : Timeout was exceeded, we return this fallback text instead.
 The method providing the alternative value must have the same CDI scope,
 be public and have the same input and return types.
 
-==== Circuit Breaker
-Allows system to fail fast after detecting a failure.
-When a failing resource is detected additional requests will fail instantly.
-
 ==== Bulkhead
 Bulkhead isolates faults in one part of the system from cascading out of control.
 If solved this by limiting the number of concurrent requests to a resource.
 
-https://microprofile.io/project/eclipse/microprofile-fault-tolerance/spec/src/main/asciidoc/bulkhead.asciidoc[Bulkhead documentation].
+The code example limits the concurrency to 2 executions, the third will trigger exeption.
+```
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/bulkhead/5000
+Expected HTTP 200 : Function simulated work for 5000ms.
+
+Now do the same from 3 command line windows and you'll see that the last one will fail like this :
+Expected HTTP 400 : We just got RuntimeException of type 'BulkheadException'.
+```
+[NOTE]
+The ExceptionMapperUnhandled eats all RunTimeExceptions (including BulkheadException) and maps to HTTP 400 and a text message.
+
+More documentation at https://microprofile.io/project/eclipse/microprofile-fault-tolerance/spec/src/main/asciidoc/bulkhead.asciidoc[Bulkhead documentation].
+
+==== Circuit Breaker
+Allows system to fail fast after detecting a failure.
+When a failing resource is detected additional requests will fail instantly.
 

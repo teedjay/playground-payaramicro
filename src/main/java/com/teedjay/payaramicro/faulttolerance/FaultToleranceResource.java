@@ -38,15 +38,15 @@ public class FaultToleranceResource {
     }
 
     @GET
-    @Path("circuitBreaker/{id}")
-    public String circuitBreaker(@PathParam("id") long id) {
-        return "Allows system to fail fast after detecting a failure.";
+    @Path("bulkhead/{duration}")
+    public String bulkhead(@PathParam("duration") long duration) {
+        return crazyDefunctResource.callFunctionThatOnlyAllowsTwoConcurrentExecutions(duration);
     }
 
     @GET
-    @Path("bulkhead/{id}")
-    public String bulkhead(@PathParam("id") long id) {
-        return "Bulkhead isolates faults in one part of the system from cascading out of control.";
+    @Path("circuitBreaker/{id}")
+    public String circuitBreaker(@PathParam("id") long id) {
+        return "Allows system to fail fast after detecting a failure.";
     }
 
 }
