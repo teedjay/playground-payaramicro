@@ -1,5 +1,5 @@
 === Fault Tolerance 1.0
-The Fault Tolerance API gives you powerful features that solves typical issues dealing with latency and fault tolerance in distributed systems and MicroService.
+The Fault Tolerance API gives you powerful features that solves typical issues dealing with latency and fault tolerance in distributed systems like MicroServices.
 
 The functionality is similar as that found in popular 3rd party libraries as https://github.com/Netflix/Hystrix[Hystrix], but much easier to use.
 
@@ -25,7 +25,7 @@ Expected return is HTTP 400 : We just got RuntimeException of type 'IllegalState
 Define a duration for timeout that will abandon the execution.
 Very useful in combination with fallback.
 
-Example will timeout after 1000ms.
+The code example will timeout and abandon execution after 1000ms.
 ```
 curl -i http://localhost:8080/payaramicro/rest/faulttolerance/timeout/500
 Expected HTTP 200 : Function simulated work for 500ms.
@@ -34,9 +34,14 @@ curl -i http://localhost:8080/payaramicro/rest/faulttolerance/timeout/1500
 Expected HTTP 400 : We just got RuntimeException of type 'TimeoutException'.
 ```
 
+[NOTE]
+The ExceptionMapperUnhandled eats all RunTimeExceptions (including TimeoutException) and maps to HTTP 400 and a text message.
+
 ==== Fallback
 When execution fails you can provide an alternative method that should return a value.
 Useful to prevent system from failing and continue with some default or cached data.
+
+The code example will timeout after 1000ms and return an alternative value instead.
 ```
 curl -i http://localhost:8080/payaramicro/rest/faulttolerance/fallback/500
 Expected HTTP 200 : Function simulated work for 500ms.
@@ -44,6 +49,10 @@ Expected HTTP 200 : Function simulated work for 500ms.
 curl -i http://localhost:8080/payaramicro/rest/faulttolerance/fallback/1500
 Expected HTTP 200 : Timeout was exceeded, we return this fallback text instead.
 ```
+
+[NOTE]
+The method providing the alternative value must have the same CDI scope,
+be public and have the same input and return types.
 
 ==== Circuit Breaker
 Allows system to fail fast after detecting a failure.
@@ -55,5 +64,3 @@ If solved this by limiting the number of concurrent requests to a resource.
 
 https://microprofile.io/project/eclipse/microprofile-fault-tolerance/spec/src/main/asciidoc/bulkhead.asciidoc[Bulkhead documentation].
 
-[NOTE]
-The ExceptionMapperUnhandled eats all RunTimeExceptions (including TimeoutException) and maps them to HTTP 400 and a text message.
