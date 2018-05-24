@@ -1,6 +1,7 @@
 package com.teedjay.payaramicro.database;
 
 import javax.annotation.Resource;
+import javax.enterprise.context.RequestScoped;
 import javax.sql.DataSource;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 @Path("database")
+@RequestScoped
 public class DefaultDatabaseResource {
 
     @Resource

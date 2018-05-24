@@ -3,6 +3,11 @@ It is easy to add security as a layer to your application.  In the `security` pa
 have a filter called BasicAuthenticationLayer that demos how to protect a url and inject
 information about who is authenticated directly into the REST service.
 ```
-curl -I http://localhost:8080/payaramicro/rest/secure                   <= 401 Unauthorized
+curl -I http://localhost:8080/payaramicro/rest/secure                   <= 400 NotAuthorizedException
 curl -i --user ole:bole http://localhost:8080/payaramicro/rest/secure   <= 200 OK
 ```
+
+[NOTE]
+You will not get "HTTP 401 Unauthorized" when NotAuthorizedException is thrown as you expected.
+The reason is that our ExceptionMapperUnhandled eats all RunTimeExceptions (including NotAuthorizedException) and maps them to HTTP 400 and a text message.
+

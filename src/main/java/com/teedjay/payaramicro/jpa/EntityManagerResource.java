@@ -1,5 +1,6 @@
 package com.teedjay.payaramicro.jpa;
 
+import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("jpa")
+@RequestScoped
 public class EntityManagerResource {
 
     @PersistenceContext(unitName = "MyDefaultPersistenceUnit")

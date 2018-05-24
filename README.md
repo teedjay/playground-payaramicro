@@ -26,6 +26,13 @@ Each package in this project aims to demonstrate one feature and the different p
 ## TODO List
 - [x] Add Oracle data-source example
 - [x] Add Asciidoctor documentaton for each feaure (keep this main README lean and clean)
+- [x] MicroProfile 1.2 - Retry
+- [ ] MicroProfile 1.2 - Circuit Breaker
+- [ ] MicroProfile 1.2 - Bulkhead
+- [ ] MicroProfile 1.2 - Fallback
+- [ ] MicroProfile 1.2 - Timeout
+- [ ] Replace System.out and System.err with logging
+- [ ] Explain how to do proper logging with Payara (JUL and SLF4J, combined in server log or separate)
 
 ### To build the WAR file
 You need Java 8 and Maven 8 installed to build and run.

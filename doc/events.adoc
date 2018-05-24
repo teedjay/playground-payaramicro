@@ -6,12 +6,10 @@ The actual event is just a normal Java bean and to send it you @Inject a typed e
 
 To receive events you annotate your event listening methods to @Observes the typed events and do whatever you need to be done.
 
-==== How to test
 To send a new event use the curl command below.
 ```
-curl -I http://localhost:8080/payaramicro/rest/events
+curl -i http://localhost:8080/payaramicro/rest/events
+Expect HTTP 200 with the sent message in the response body
 ```
-You should get the sendt message in the response.
 
-==== Expected result
-Expected result is that both observers beeing triggered, each logging the received event message to system out.
+Expected result is that both observers beeing triggered, each logging the received event message to the server log.

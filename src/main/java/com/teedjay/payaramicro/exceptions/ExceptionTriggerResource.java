@@ -1,11 +1,13 @@
 package com.teedjay.payaramicro.exceptions;
 
+import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 @Path("exception")
+@RequestScoped
 public class ExceptionTriggerResource {
 
     @GET

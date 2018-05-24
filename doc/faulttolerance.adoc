@@ -1,0 +1,41 @@
+=== Fault Tolerance 1.0
+The Fault Tolerance API gives you powerful features that solves typical issues dealing with latency and fault tolerance in distributed systems and MicroService.
+
+The functionality is similar as that found in popular 3rd party libraries as https://github.com/Netflix/Hystrix[Hystrix], but much easier to use.
+
+Most of the functionality can be combined, so that a timeout or bulkhead issue could trigger a fallback value.
+
+==== Retry
+Using a simple annotations you can define criteria for how often and when to retry.
+
+The example code for this feature is rigged for max 4 tries before failing (the original call + three retries).
+You control the number of attempts before simulating success.
+```
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/retry/1
+Expected return is HTTP 200 : This is try 1, returning success
+
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/retry/4
+Expected return is HTTP 200 : This is try 4, returning success
+
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/retry/9
+Expected return is HTTP 400 : We just got RuntimeException of type 'IllegalStateException'.
+
+```
+
+==== Circuit Breaker
+Allows system to fail fast after detecting a failure.
+When a failing resource is detected additional requests will fail instantly.
+
+==== Bulkhead
+Bulkhead isolates faults in one part of the system from cascading out of control.
+If solved this by limiting the number of concurrent requests to a resource.
+
+https://microprofile.io/project/eclipse/microprofile-fault-tolerance/spec/src/main/asciidoc/bulkhead.asciidoc[Bulkhead documentation].
+
+==== Fallback
+When execution fails you can provide an alternative return value.
+This could be useful to prevent system from failing and continue with some default values.
+
+==== Timeout
+Define a duration for timeout that will abandon the execution.
+Very useful in combination with fallback.

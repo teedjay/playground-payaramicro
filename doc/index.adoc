@@ -1,4 +1,5 @@
 :toc:
+:toclevels: 3
 :toc-placement!:
 
 = Payara Micro Playground
@@ -40,10 +41,12 @@ include::jpa.adoc[]
 include::security.adoc[]
 
 == How to use MicroProfile 1.2 features
-These features are yet to be included in the playground `Fault Tolerance 1.0`, `JWT Propagation 1.0`,
+These features are yet to be included in the playground `JWT Propagation 1.0`,
 `Health Metrics 1.0`, `Health Check 1.0`.
 
 include::config.adoc[]
+
+include::faulttolerance.adoc[]
 
 include::metrics.adoc[]
 
