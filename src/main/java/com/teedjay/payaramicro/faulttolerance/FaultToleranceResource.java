@@ -26,6 +26,18 @@ public class FaultToleranceResource {
     }
 
     @GET
+    @Path("timeout/{duration}")
+    public String timeout(@PathParam("duration") long duration) {
+        return crazyDefunctResource.slowFunctionThatSleepsForAWhile(duration);
+    }
+
+    @GET
+    @Path("fallback/{duration}")
+    public String fallback(@PathParam("duration") long duration) {
+        return crazyDefunctResource.slowFunctionWithFallbackAfterAWhile(duration);
+    }
+
+    @GET
     @Path("circuitBreaker/{id}")
     public String circuitBreaker(@PathParam("id") long id) {
         return "Allows system to fail fast after detecting a failure.";
@@ -35,18 +47,6 @@ public class FaultToleranceResource {
     @Path("bulkhead/{id}")
     public String bulkhead(@PathParam("id") long id) {
         return "Bulkhead isolates faults in one part of the system from cascading out of control.";
-    }
-
-    @GET
-    @Path("fallback/{alternative}")
-    public String fallback(@PathParam("alternative") long alternative) {
-        return "When execution fails you can provide an alternative return value.";
-    }
-
-    @GET
-    @Path("timeout/{duration}")
-    public String timeout(@PathParam("duration") long duration) {
-        return "Define a duration for timeout that will abandon the execution.";
     }
 
 }

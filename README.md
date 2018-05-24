@@ -24,6 +24,7 @@ additional libraries.  This should provide lean and mean WAR files, fast to copy
 Each package in this project aims to demonstrate one feature and the different parts are [documented and explained](doc/index.adoc).
 
 ## TODO List
+- [x] Add Docker instructions
 - [x] Add Oracle data-source example
 - [x] Add Asciidoctor documentaton for each feaure (keep this main README lean and clean)
 - [x] MicroProfile 1.2 - Retry
@@ -33,6 +34,9 @@ Each package in this project aims to demonstrate one feature and the different p
 - [ ] MicroProfile 1.2 - Timeout
 - [ ] Replace System.out and System.err with logging
 - [ ] Explain how to do proper logging with Payara (JUL and SLF4J, combined in server log or separate)
+- [ ] Build asciidoc PDF / HTML automatically
+- [ ] Add .editorconfig
+- [ ] Add Jenkinsfile
 
 ### To build the WAR file
 You need Java 8 and Maven 8 installed to build and run.
