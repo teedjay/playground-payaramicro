@@ -75,3 +75,23 @@ More documentation at https://microprofile.io/project/eclipse/microprofile-fault
 Allows system to fail fast after detecting a failure.
 When a failing resource is detected additional requests will fail instantly.
 
+The code example will break the circuit when 3 out of 4 calls fails (failureRatio 0.75).
+After 15 seconds the circuit will go into half-closed mode and allow new calls.
+After 5 successful calls in half-closed mode the circuit returns to permanent closed mode.
+
+```
+Try one call that does not force exception :
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/circuitbreaker/false
+Expect HTTP 200 and a response text.
+
+Now try 6 calls in a row that force a failure :
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/circuitbreaker/true
+Expect the first 3 to fail with IllegalStateException and the remaining to fail with CircuitBreakerOpenException.
+
+Immediately continue with multiple calls that does not force exception :
+curl -i http://localhost:8080/payaramicro/rest/faulttolerance/circuitbreaker/false
+Expect them to continue to fail with CircuitBreakerOpenException unit circuit has been open for 15 seconds.
+
+When circuit is closed again you can force some more failures and verify that the circuit will break once more.
+```
+

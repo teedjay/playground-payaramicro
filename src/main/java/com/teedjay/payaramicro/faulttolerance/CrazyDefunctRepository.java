@@ -1,19 +1,16 @@
 package com.teedjay.payaramicro.faulttolerance;
 
-import org.eclipse.microprofile.faulttolerance.Bulkhead;
-import org.eclipse.microprofile.faulttolerance.Fallback;
-import org.eclipse.microprofile.faulttolerance.Retry;
-import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.faulttolerance.*;
 
 import javax.enterprise.context.RequestScoped;
 
 @RequestScoped
-public class CrazyDefunctResource {
+public class CrazyDefunctRepository {
 
     private long numberOfTimesTried;
 
     @Retry(maxRetries = 3, retryOn = { IllegalStateException.class })
-    public String simulateCallingAFunctionThatFails(long timesToFailInARow) {
+    public String functionThatFailsMultipleTimesInARow(long timesToFailInARow) {
         numberOfTimesTried++;
         if (timesToFailInARow > numberOfTimesTried) {
             String failure = "This is try " + numberOfTimesTried + ", triggers failure";
@@ -41,8 +38,14 @@ public class CrazyDefunctResource {
     }
 
     @Bulkhead(2)
-    public String callFunctionThatOnlyAllowsTwoConcurrentExecutions(long milliSeconds) {
+    public String functionThatOnlyAllowsTwoConcurrentExecutions(long milliSeconds) {
         return sleep(milliSeconds);
+    }
+
+    @CircuitBreaker(successThreshold = 5, requestVolumeThreshold = 4, failureRatio = 0.75, delay = 15000)
+    public String functionThatFailsOnCommand(boolean shouldFail) {
+        if (shouldFail) throw new IllegalStateException("The function failed");
+        return "Function did not fail";
     }
 
     private String sleep(long milliSeconds) {

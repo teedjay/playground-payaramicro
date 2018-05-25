@@ -11,7 +11,7 @@ import javax.ws.rs.PathParam;
 public class FaultToleranceResource {
 
     @Inject
-    private CrazyDefunctResource crazyDefunctResource;
+    private CrazyDefunctRepository crazyDefunctRepository;
 
     @GET
     @Path("retry/{timesToFail}")
@@ -22,31 +22,32 @@ public class FaultToleranceResource {
         } else {
             System.out.println("Expect call to work at attempt " + timesToFail);
         }
-        return crazyDefunctResource.simulateCallingAFunctionThatFails(timesToFail);
+        return crazyDefunctRepository.functionThatFailsMultipleTimesInARow(timesToFail);
     }
 
     @GET
     @Path("timeout/{duration}")
     public String timeout(@PathParam("duration") long duration) {
-        return crazyDefunctResource.slowFunctionThatSleepsForAWhile(duration);
+        return crazyDefunctRepository.slowFunctionThatSleepsForAWhile(duration);
     }
 
     @GET
     @Path("fallback/{duration}")
     public String fallback(@PathParam("duration") long duration) {
-        return crazyDefunctResource.slowFunctionWithFallbackAfterAWhile(duration);
+        return crazyDefunctRepository.slowFunctionWithFallbackAfterAWhile(duration);
     }
 
     @GET
     @Path("bulkhead/{duration}")
     public String bulkhead(@PathParam("duration") long duration) {
-        return crazyDefunctResource.callFunctionThatOnlyAllowsTwoConcurrentExecutions(duration);
+        return crazyDefunctRepository.functionThatOnlyAllowsTwoConcurrentExecutions(duration);
     }
 
     @GET
-    @Path("circuitBreaker/{id}")
-    public String circuitBreaker(@PathParam("id") long id) {
-        return "Allows system to fail fast after detecting a failure.";
+    @Path("circuitbreaker/{shouldFail}")
+    public String circuitBreaker(@PathParam("shouldFail") boolean shouldFail) {
+        return crazyDefunctRepository.functionThatFailsOnCommand(shouldFail);
     }
 
 }
+
