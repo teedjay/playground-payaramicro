@@ -31,7 +31,7 @@ Each package in this project aims to demonstrate one feature and the different p
 - [x] MicroProfile 1.2 - Timeout
 - [x] MicroProfile 1.2 - Fallback
 - [x] MicroProfile 1.2 - Bulkhead
-- [ ] MicroProfile 1.2 - Circuit Breaker
+- [x] MicroProfile 1.2 - Circuit Breaker
 - [ ] Replace System.out and System.err with logging
 - [ ] Explain how to do proper logging with Payara (JUL and SLF4J, combined in server log or separate)
 - [ ] Build asciidoc PDF / HTML automatically
