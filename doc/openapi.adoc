@@ -1,0 +1,17 @@
+=== OpenAPI
+Automatically exposes OpenAPI v3 (swagger) definitions in YAML format.
+There are multiple ways to achieve this, from static yaml file to auto discovery
+with additional annotations.
+
+The resulting YAML definition will be available here :
+```
+curl http://localhost:8080/openapi
+```
+
+[NOTE]
+You can specify which packages to autodiscover in the `microprofile-config.properties`, se below.
+`
+Add this property to scan the `com.teedjay.payaramicro.openapi` package only.
+```
+mp.openapi.scan.packages=com.teedjay.payaramicro.openapi
+```

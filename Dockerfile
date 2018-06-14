@@ -3,7 +3,7 @@ COPY src /usr/src/payaramicro/src
 COPY pom.xml /usr/src/payaramicro
 RUN mvn -f /usr/src/payaramicro/pom.xml clean package -Dmaven.test.skip=true
 
-FROM payara/micro:5.181
+FROM payara/micro:5.182
 COPY --from=MAVENBUILDER /usr/src/payaramicro/target/*.war /opt/payara/deployments
 
 # docker build -t my_payara_image .

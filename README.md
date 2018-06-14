@@ -1,6 +1,6 @@
 # Payara Micro Playground
 Payara Micro is a small [Java EE](http://www.oracle.com/technetwork/java/javaee/tech/index-jsp-142185.html) server 
-that also includes support for [Eclipse MicroProfile 1.2](https://projects.eclipse.org/projects/technology.microprofile) 
+that also includes support for [Eclipse MicroProfile 1.3](https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-1.3) 
 and [JCache](https://www.jcp.org/en/jsr/detail?id=107).
 
 Payara Micro have built-in clustering as default (no configuration needed) and can run WAR files directly
@@ -18,7 +18,7 @@ Payara Micro also facilitates Fat-JAR / Uber-JAR, creating a single runnable jar
 that includes both appserver and your application(s).  This is great for easy deployment. 
 
 ## What is this project?
-This is a playground to mess around with different JEE7 and MicroProfile 1.2 features without any
+This is a playground to mess around with different JEE7 and MicroProfile 1.3 features without any
 additional libraries.  This should provide lean and mean WAR files, fast to copy and fast to deploy.
 
 Each package in this project aims to demonstrate one feature and the different parts are [documented and explained](doc/index.adoc).
@@ -32,9 +32,14 @@ Each package in this project aims to demonstrate one feature and the different p
 - [x] MicroProfile 1.2 - Fallback
 - [x] MicroProfile 1.2 - Bulkhead
 - [x] MicroProfile 1.2 - Circuit Breaker
+- [ ] MicroProfile 1.3 OpenTracing 1.0
+- [ ] MicroProfile 1.3 OpenAPI 1.0
+- [ ] MicroProfile 1.3 Type-safe Rest Client 1.0
+- [ ] MicroProfile 1.3 Metrics 1.1
+- [ ] MicroProfile 1.3 Config 1.2 (existing example is MicroProfile 1.2)
 - [ ] Replace System.out and System.err with logging
 - [ ] Explain how to do proper logging with Payara (JUL and SLF4J, combined in server log or separate)
-- [ ] Build asciidoc PDF / HTML automatically
+- [ ] Build asciidoc PDF and HTML automatically
 - [ ] Add .editorconfig
 - [ ] Add Jenkinsfile
 
@@ -49,13 +54,13 @@ Make a local payara folder and download the latest [Payara Micro 5](https://www.
 
 Then run the following command using Java 8.
 ```
-java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war
+java -jar payara/payara-micro-5.182.jar --deploy target/payaramicro.war
 ```
 
 ### To build and run as standalone "Uber JAR" / "FAT JAR"
 ```
 mvn clean package
-java -jar payara/payara-micro-5.181.jar --deploy target/payaramicro.war --outputUberJar my-standalone-app.jar
+java -jar payara/payara-micro-5.182.jar --deploy target/payaramicro.war --outputUberJar my-standalone-app.jar
 java -jar my-standalone-app.jar
 ```
 
