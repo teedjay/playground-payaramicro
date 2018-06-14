@@ -1,4 +1,4 @@
-=== Config API 1.1
+=== Config API 1.2
 By using the Config API it is possible to inject configuration directly into your code.
 Default config override order is System Properties -> Environment Variables -> microprofile-config.properties
 

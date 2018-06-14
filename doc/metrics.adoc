@@ -1,4 +1,4 @@
-=== Metrics
+=== Metrics API 1.1
 You can obtain some basic metrics about the Java RunTime in Prometheus format (default) or JSON directly.
 ```
 curl -i http://localhost:8080/metrics

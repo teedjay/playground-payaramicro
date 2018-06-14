@@ -78,9 +78,9 @@ docker stop playgound_payara
 docker start playgound_payara
 ```
 
-### OpenAPI v3 / Swagger definition
-The MicroProfile 1.3 specification includes [OpenAPI support](http://download.eclipse.org/microprofile/microprofile-open-api-1.0/microprofile-openapi-spec.html).  
-Take a look in the `openapi` package to see how this work.
+### OpenAPI v3.0.0 / Swagger definition
+The MicroProfile 1.3 specification includes [OpenAPI 1.0 ](http://download.eclipse.org/microprofile/microprofile-open-api-1.0/microprofile-openapi-spec.html).  
+This produces documentaton in the openapi 3.0.0 format, take a look in the `openapi` package to see how this work.
 
 For a demo start the application and check out this url : curl http://localhost:8080/openapi
 

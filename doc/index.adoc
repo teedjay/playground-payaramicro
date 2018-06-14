@@ -41,16 +41,19 @@ include::jpa.adoc[]
 include::security.adoc[]
 
 == How to use MicroProfile 1.3 features
-These features are yet to be included in the playground `JWT Propagation 1.0`,
-`Health Metrics 1.0`, `Health Check 1.0`.
+These features are yet to be included in the playground
+`JWT Propagation 1.0`,
+`Health Check 1.0`,
+`Microprofile Rest Client 1.0` and
+`Microprofile OpenTracing 1.0`.
 
 include::config.adoc[]
-
-include::faulttolerance.adoc[]
 
 include::metrics.adoc[]
 
 include::openapi.adoc[]
+
+include::faulttolerance.adoc[]
 
 == How to use JCache features
 When running Payara Micro in cluster mode you have cluster aware caching available for free.
