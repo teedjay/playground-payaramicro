@@ -16,7 +16,6 @@ import javax.ws.rs.core.Response;
 public class OpenApiResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Simple POJO demo", description = "Vise hvordan POJO returnert direkte automatisk kommer med i OpenAPI output")
     public SimpleResponse simpleQueryParam(@QueryParam("id") String id) {
         return SimpleResponse.createDemoResponse(id);
