@@ -78,15 +78,11 @@ docker stop playgound_payara
 docker start playgound_payara
 ```
 
-### Swagger definition
-When building the jaxrs-analyzer will inspect the actual bytecode and create swagger definition in `target/jaxrs-analyzer/swagger.json`.  
-This definition can be imported into Postman or other tools for easy testing and can be used by clients to create client code.
+### OpenAPI v3 / Swagger definition
+The MicroProfile 1.3 specification includes [OpenAPI support](http://download.eclipse.org/microprofile/microprofile-open-api-1.0/microprofile-openapi-spec.html).  
+Take a look in the `openapi` package to see how this work.
 
-The jaxrs-analyzer actually does some byte code analyzis and might be able to find out which entities you are
-returning in your Response.   For more feature rich swagger generation and manual control you can look into 3rd party
-generators like [Apiee](https://github.com/phillip-kruger/apiee/wiki) or use the latest Swagger 2.0 
-[OpenApi 3.0 libraries](https://github.com/frantuma/swagger-core/wiki/Swagger-2.X---Getting-started). 
-
+For a demo start the application and check out this url : curl http://localhost:8080/openapi
 
 ## Clustering
 If you start multiple Payara Micro instanses they will automatically cluster together and share

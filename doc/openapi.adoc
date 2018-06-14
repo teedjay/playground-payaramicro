@@ -1,5 +1,6 @@
 === OpenAPI
-Automatically exposes OpenAPI v3 (swagger) definitions in YAML format.
+Automatically exposes http://download.eclipse.org/microprofile/microprofile-open-api-1.0/microprofile-openapi-spec.html[OpenAPI] definitions in YAML format (aka Swagger).
+
 There are multiple ways to achieve this, from static yaml file to auto discovery
 with additional annotations.
 
