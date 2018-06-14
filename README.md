@@ -84,6 +84,8 @@ Take a look in the `openapi` package to see how this work.
 
 For a demo start the application and check out this url : curl http://localhost:8080/openapi
 
+For a list of tools and utilities regarding OpenAPI take a look here : https://apis.guru/awesome-openapi3/
+
 ## Clustering
 If you start multiple Payara Micro instanses they will automatically cluster together and share
 session and cache data.  This feature is provided as default by [Hazelecast](https://hazelcast.org).
