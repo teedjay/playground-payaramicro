@@ -2,13 +2,13 @@
 You can obtain some basic metrics about the Java RunTime in Prometheus format (default) or JSON directly.
 ```
 curl -i http://localhost:8080/metrics
-curl -i -H "Accept : application/json" http://localhost:8080/metrics
+curl -i -H "Accept: application/json" http://localhost:8080/metrics
 ```
 
 If you only want too see the application metrics you could limit to :
 ```
 curl -i http://localhost:8080/metrics/application
-curl -i -H "Accept : application/json" http://localhost:8080/metrics/application
+curl -i -H "Accept: application/json" http://localhost:8080/metrics/application
 ```
 
 To generate some metrics call the `metricsdemo` resource a few times before re-checking the metrics url.
