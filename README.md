@@ -33,7 +33,7 @@ Each package in this project aims to demonstrate one feature and the different p
 - [x] MicroProfile 1.2 - Bulkhead
 - [x] MicroProfile 1.2 - Circuit Breaker
 - [ ] MicroProfile 1.3 OpenTracing 1.0
-- [ ] MicroProfile 1.3 OpenAPI 1.0
+- [x] MicroProfile 1.3 OpenAPI 1.0
 - [ ] MicroProfile 1.3 Type-safe Rest Client 1.0
 - [ ] MicroProfile 1.3 Metrics 1.1
 - [ ] MicroProfile 1.3 Config 1.2 (existing example is MicroProfile 1.2)
