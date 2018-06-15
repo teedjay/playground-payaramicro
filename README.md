@@ -27,18 +27,16 @@ Each package in this project aims to demonstrate one feature and the different p
 - [x] Add Docker instructions
 - [x] Add Oracle data-source example
 - [x] Add Asciidoctor documentaton for each feaure (keep this main README lean and clean)
-- [x] MicroProfile 1.2 - Retry
-- [x] MicroProfile 1.2 - Timeout
-- [x] MicroProfile 1.2 - Fallback
-- [x] MicroProfile 1.2 - Bulkhead
-- [x] MicroProfile 1.2 - Circuit Breaker
-- [x] MicroProfile 1.3 OpenAPI 1.0
-- [x] MicroProfile 1.3 Metrics 1.1
-- [ ] MicroProfile 1.3 Config 1.2 (existing example is MicroProfile 1.2)
-- [ ] MicroProfile 1.3 OpenTracing 1.0
-- [ ] MicroProfile 1.3 Type-safe Rest Client 1.0
-- [ ] Replace System.out and System.err with logging
+- [x] MicroProfile Fault Tolerance 1.0 (Retry, Timeout, Fallback, Bulkhead, Circuit Breaker)
+- [x] MicroProfile OpenAPI 1.0
+- [x] MicroProfile Metrics 1.1
+- [x] MicroProfile Health Check 1.0
+- [ ] MicroProfile Config 1.2 (existing example is 1.1 only)
+- [ ] MicroProfile OpenTracing 1.0
+- [ ] MicroProfile Rest Client 1.0 (Type-safe Rest Client 1.0)
+- [ ] MicroProfile JWT Auth 1.0 (JWT Propagation 1.0)
 - [ ] Explain how to do proper logging with Payara (JUL and SLF4J, combined in server log or separate)
+- [ ] Replace System.out and System.err with proper logging
 - [ ] Build asciidoc PDF and HTML automatically
 - [ ] Add .editorconfig
 - [ ] Add Jenkinsfile
