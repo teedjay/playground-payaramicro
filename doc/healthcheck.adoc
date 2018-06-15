@@ -1,0 +1,50 @@
+===  Health Check API 1.0
+You can easily provide health information in a standard way.
+```
+curl -i http://localhost:8080/health
+```
+
+Take a look into the `healthcheck` package to see a couple of code examples.
+One should always return "up" while the other will pseudo-randomly flip status.
+
+If the overall status is DOWN you should get a `503 Service Unavailable` response and a payload with details :
+```
+{
+    "checks": [
+        {
+            "data": {},
+            "name": "flipper",
+            "state": "DOWN"
+        },
+        {
+            "data": {
+                "free": "10gb"
+            },
+            "name": "archive",
+            "state": "UP"
+        }
+    ],
+    "outcome": "DOWN"
+}
+```
+
+If the overall status is UP you should get a `200 OK` response and a payload with details :
+```
+{
+    "checks": [
+        {
+            "data": {
+                "free": "10gb"
+            },
+            "name": "archive",
+            "state": "UP"
+        },
+        {
+            "data": {},
+            "name": "flipper",
+            "state": "UP"
+        }
+    ],
+    "outcome": "UP"
+}
+```

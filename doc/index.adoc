@@ -43,7 +43,6 @@ include::security.adoc[]
 == How to use MicroProfile 1.3 features
 These features are yet to be included in the playground
 `JWT Propagation 1.0`,
-`Health Check 1.0`,
 `Microprofile Rest Client 1.0` and
 `Microprofile OpenTracing 1.0`.
 
@@ -52,6 +51,8 @@ include::config.adoc[]
 include::metrics.adoc[]
 
 include::openapi.adoc[]
+
+include::healthcheck.adoc[]
 
 include::faulttolerance.adoc[]
 
