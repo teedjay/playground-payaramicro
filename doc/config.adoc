@@ -5,4 +5,22 @@ Default config override order is System Properties -> Environment Variables -> m
 In the package `config` you'll find a small webservice that returns a config read from the properties file :
 ```
 curl http://localhost:8080/payaramicro/rest/config
+
+The injected username string is 'UsernameFromConfigFile' and favorite cheese is 'jarlsberg'
 ```
+
+The username is read from the `microprofile-config.properties` file, while the favorite cheese is read from the `CustomConfigSource`.
+
+[NOTE]
+I have added a custom ConfigSource that illustrates how to get properties from other sources into the Config API for injection.
+
+By adding your own ConfigSources you can read config from files, network, zookeeper
+or any other system or means without changing the code that uses the config.
+
+Custom ConfigSources are dynamically loaded using standard Java ServiceLoader mechanism,
+just add a `META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource`
+file with the name of your ConfigSource implementation class.
+
+This way you can have multiple ConfigSources each held in their own jar file
+and automatically discovered and used at run-time.
+

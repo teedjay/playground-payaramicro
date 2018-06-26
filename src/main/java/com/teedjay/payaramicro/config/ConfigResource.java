@@ -11,15 +11,19 @@ import javax.ws.rs.Path;
 @RequestScoped
 public class ConfigResource {
 
-    // config priority : system -> environment -> META-INF/microprofile-config.properties
+    // config priority : system -> environment -> CustomConfigSource -> META-INF/microprofile-config.properties
 
     @Inject
     @ConfigProperty(name = "some.cool.username", defaultValue = "DefaultUsernameFromCode")
     private String username;
 
+    @Inject
+    @ConfigProperty(name = "cheese.better", defaultValue = "DefaultFavoriteCheese")
+    private String cheese;
+
     @GET
     public String returnTheInjectedProperty() {
-        return "The injected username string is : '" + username + "'\n";
+        return String.format("The injected username string is '%s' and favorite cheese is '%s'%n", username, cheese);
     }
 
 }
