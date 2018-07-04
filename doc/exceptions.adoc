@@ -10,3 +10,15 @@ a simple text/plain message.
 curl -i http://localhost:8080/payaramicro/rest/exception/2      <== returns 10/2
 curl -i http://localhost:8080/payaramicro/rest/exception/0      <== 10/0 trigges ArithmeticException and will be mapped
 ```
+
+You can throw any exception by passing the full class name
+```
+Catched by the ExceptionMapperUnhandled (catches all RuntimeExceptions) :
+curl -i http://localhost:8080/payaramicro/rest/exception/throw?class=java.langIllegalStateException
+curl -i http://localhost:8080/payaramicro/rest/exception/throw?class=javax.ws.rs.WebApplicationException
+
+Catched by the ExceptionMapperThrowable (catches Throwables, like exception and error) :
+curl -i http://localhost:8080/payaramicro/rest/exception/throw?class=no.such.Exception          <== Exception
+curl -i http://localhost:8080/payaramicro/rest/exception/throw?class=java.io.IOException        <== Exception
+curl -i http://localhost:8080/payaramicro/rest/exception/throw?class=java.lang.ThreadDeath      <== Error
+```
