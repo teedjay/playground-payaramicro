@@ -5,7 +5,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 @Schema(name="ComplexResponse", description="POJO that is used to return some data structure from the API.")
 public class ComplexResponse {
 
-    @Schema(required = true, example = "17")
+    @Schema(required = true, example = "lowercasetext")
     public String id;
 
     @Schema(example = "Human readable description of the ID")

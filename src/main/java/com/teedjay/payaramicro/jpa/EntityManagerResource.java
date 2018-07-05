@@ -11,7 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("jpa")
+@Path("/jpa")
 @RequestScoped
 public class EntityManagerResource {
 

@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("secure")
+@Path("/secure")
 @RequestScoped
 public class SecureResource {
 

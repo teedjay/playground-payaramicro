@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("events")
+@Path("/events")
 @RequestScoped
 public class EventsResource {
 

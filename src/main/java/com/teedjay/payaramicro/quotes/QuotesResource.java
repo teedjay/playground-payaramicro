@@ -9,7 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-@Path("quotes")
+@Path("/quotes")
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class QuotesResource {

@@ -1,0 +1,61 @@
+<server description="Open Liberty Development Server">
+
+    <featureManager>
+
+        <!--
+        https://www.ibm.com/support/knowledgecenter/en/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/rwlp_feat.html
+
+        Når man booter med følgende features får man featurelisten nedenfor aktivert
+        <feature>javaee-7.0</feature>
+        <feature>microProfile-1.3</feature>
+
+        The server installed the following features:
+        [microProfile-1.3, jndi-1.0, jca-1.7, jms-2.0, ejbPersistentTimer-3.2, j2eeManagement-1.1,
+        mpRestClient-1.0, cdi-1.2, webProfile-7.0, jsp-2.3, ejbLite-3.2, managedBeans-1.0, jsf-2.2,
+        jsonp-1.0, mpConfig-1.2, jaxrsClient-2.0, concurrent-1.0, appClientSupport-1.0, jaxb-2.2,
+        mdb-3.2, jacc-1.5, batch-1.0, mpJwt-1.0, jaspic-1.1, jpaContainer-2.1, mpOpenAPI-1.0,
+        mpFaultTolerance-1.0, servlet-3.1, beanValidation-1.1, ssl-1.0, mpHealth-1.0, appSecurity-2.0,
+        jdbc-4.1, wasJmsServer-1.0, jaxrs-2.0, javaMail-1.5, mpMetrics-1.1, mpOpenTracing-1.0,
+        jcaInboundSecurity-1.0, jpa-2.1, ejbHome-3.2, jaxws-2.2, el-3.0, jwt-1.0, ejbRemote-3.2,
+        javaee-7.0, opentracing-1.0, ejb-3.2, json-1.0, distributedMap-1.0, websocket-1.1,
+        wasJmsSecurity-1.0, wasJmsClient-2.0].
+        -->
+
+        <feature>javaee-7.0</feature>
+        <!--
+        I need MP1.3 but will only enable the features in use.
+        <feature>microProfile-1.3</feature>
+
+        These two are not used anymore
+        <feature>mpRestClient-1.0</feature>
+        <feature>mpJwt-1.0</feature>
+
+        Disable mpOpenTracing, it eats "ExceptionMappers" when not configured :
+        <feature>mpOpenTracing-1.0</feature>
+        -->
+        <feature>mpConfig-1.2</feature>
+        <feature>mpOpenAPI-1.0</feature>
+        <feature>mpFaultTolerance-1.0</feature>
+        <feature>mpHealth-1.0</feature>
+        <feature>mpMetrics-1.1</feature>
+
+    </featureManager>
+
+    <quickStartSecurity userName="admin" userPassword="adminpwd"/>
+    <keyStore id="defaultKeyStore" password="mpKeystore"/>
+
+    <!--
+    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" host="*" />
+    -->
+
+    <basicRegistry id="basic" realm="customRealm">
+        <user name="user1" password="p@ssw0rd" />
+        <user name="user2" password="pa$$w0rd" />
+        <user name="user3" password="{xor}Lz4sLCgwLTs=" />
+        <group name="admins">
+            <member name="user1" />
+            <member name="user3" />
+        </group>
+    </basicRegistry>
+
+</server>

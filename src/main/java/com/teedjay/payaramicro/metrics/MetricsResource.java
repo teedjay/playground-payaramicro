@@ -13,7 +13,7 @@ import java.util.Random;
 @Timed(name = "timed", absolute = true)
 @Metered(name = "metered", absolute = true)
 @RequestScoped
-@Path("metricsdemo")
+@Path("/metricsdemo")
 public class MetricsResource {
 
     private static final int MIN_SLEEP = 1;

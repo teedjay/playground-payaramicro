@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("config")
+@Path("/config")
 @RequestScoped
 public class ConfigResource {
 

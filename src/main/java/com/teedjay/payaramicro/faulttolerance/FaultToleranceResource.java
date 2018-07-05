@@ -6,7 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Path("faulttolerance")
+@Path("/faulttolerance")
 @RequestScoped
 public class FaultToleranceResource {
 
