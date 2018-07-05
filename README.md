@@ -47,7 +47,7 @@ You need Java 8 and Maven 8 installed to build and run.
 mvn clean package
 ```
 
-### To run locally
+### To run locally on Payara Micro
 Make a local payara folder and download the latest [Payara Micro 5](https://www.payara.fish/payara_micro) jar file there (do **not** add payara micro to git). 
 
 Then run the following command using Java 8.
@@ -60,6 +60,12 @@ java -jar payara/payara-micro-5.182.jar --deploy target/payaramicro.war
 mvn clean package
 java -jar payara/payara-micro-5.182.jar --deploy target/payaramicro.war --outputUberJar my-standalone-app.jar
 java -jar my-standalone-app.jar
+```
+
+### Optionally : Run on OpenLiberty port 9080 with hot deploy features (and debugging if needed)
+```
+mvn clean package liberty:run-server -Popenliberty
+mvn clean package liberty:debug-server -Popenliberty    <== Use "Attach to Local Process" in IDEA after server starts
 ```
 
 ### Optionally : Compile, build and run using Docker
