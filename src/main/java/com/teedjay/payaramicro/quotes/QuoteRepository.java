@@ -57,7 +57,8 @@ public class QuoteRepository {
             "Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations.",
             "Quality is more important than quantity. One home run is much better than two doubles.",
             "The people who are crazy enough to think they can change the world are the ones who do.",
-            "Things don’t have to change the world to be important."
+            "Things don’t have to change the world to be important.",
+            "People who know what they’re talking about don’t need PowerPoint."
     };
 
 }

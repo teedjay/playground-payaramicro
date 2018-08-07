@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 @RunWith(CdiRunner.class)
 public class QuoteRepositoryTest {
 
+    private static final int EXPECTED_NUMBER_OF_QUOTES = 13;
+
     @Inject
     private QuoteRepository quoteRepository;
 
@@ -30,7 +32,7 @@ public class QuoteRepositoryTest {
 
     @Test
     public void allQuotes() {
-        assertEquals(12, quoteRepository.allQuotes().size());
+        assertEquals(EXPECTED_NUMBER_OF_QUOTES, quoteRepository.allQuotes().size());
     }
 
     @Test
@@ -43,7 +45,7 @@ public class QuoteRepositoryTest {
         assertEquals(uuid, quoteThatWasInserted.id);
         assertEquals(quoteToBeInserted.quote, quoteThatWasInserted.quote);
         assertEquals(quoteToBeInserted.author, quoteThatWasInserted.author);
-        assertEquals(13, quoteRepository.allQuotes().size());
+        assertEquals(EXPECTED_NUMBER_OF_QUOTES + 1, quoteRepository.allQuotes().size());
     }
 
     @Test

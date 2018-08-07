@@ -17,12 +17,14 @@ import static org.junit.Assert.*;
 @InRequestScope
 public class QuotesResourceTest {
 
+    private static final int EXPECTED_NUMBER_OF_QUOTES = 13;
+
     @Inject
     private QuotesResource quotesResource;
 
     @Test
     public void listAllQuotes() {
-        assertEquals(12, quotesResource.listAllQuotes().size());
+        assertEquals(EXPECTED_NUMBER_OF_QUOTES, quotesResource.listAllQuotes().size());
     }
 
     @Test
